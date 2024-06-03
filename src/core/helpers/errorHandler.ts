@@ -1,10 +1,12 @@
-const invalidRoute = ( req, res ) => {
+import {Request, Response} from "express";
+
+export const invalidRoute = ( req: Request, res: Response ) => {
 
     res.status( 500 ).jsonp( { success: false, message: "Invalid API Access Request" } );
 
 }
 
-const errorHandler = ( err, req, res, next ) => {
+export const errorHandler = ( err: Error, req: Request, res: Response, next: any ) => {
 
     if ( res.headersSent ) {
 
@@ -14,9 +16,4 @@ const errorHandler = ( err, req, res, next ) => {
 
     res.status( 500 ).jsonp( { success: false, message: err.message } );
 
-}
-
-module.exports = {
-    invalidRoute,
-    errorHandler
 }

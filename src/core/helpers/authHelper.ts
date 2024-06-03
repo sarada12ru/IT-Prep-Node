@@ -1,7 +1,7 @@
-const crypto = require( "crypto" );
-const uuid = require( "uuid" );
-const jsonwebtoken = require( "jsonwebtoken" );
-const authSecret = process.env.USER_AUTHENTICATION_SECRET;
+import crypto from 'crypto';
+import uuid from 'uuid';
+import jsonwebtoken from 'jsonwebtoken';
+const authSecret: string | undefined = process.env.USER_AUTHENTICATION_SECRET;
 
 const generateSalt = () => {
 
@@ -9,7 +9,7 @@ const generateSalt = () => {
 
 };
 
-const encryptPassword = ( originalPassword, salt ) => {
+const encryptPassword = ( originalPassword: string, salt: string ) => {
 
     return crypto.createHash( "RSA-SHA256" ).update( originalPassword.toString() ).update( salt ).digest( "hex" );
     
@@ -21,18 +21,18 @@ const generateUUIDv4 = () => {
     
 }
 
-const createJWT = ( userObj ) => {
+const createJWT = ( userObj: any ) => {
 
-    return jsonwebtoken.sign( userObj, authSecret,  { expiresIn: '365d' } )
+    return jsonwebtoken.sign( userObj, authSecret ?? "",  { expiresIn: '365d' } )
 
 }
 
-const verifyJWT = async( token ) => {
+const verifyJWT = async( token: string ) => {
 
     let userObj;
 
     try {
-        userObj = jsonwebtoken.verify( token, authSecret );
+        userObj = jsonwebtoken.verify( token, authSecret ?? "" );
     }
     catch( err ) {
 
