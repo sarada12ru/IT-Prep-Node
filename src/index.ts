@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import cors from "cors";
 import { errorHandler, invalidRoute } from "./core/helpers/errorHandler";
 import "./core/db/connection";
@@ -10,7 +10,8 @@ const port = 4000;
 app.use( express.urlencoded({extended: false}) )
 app.use( cors() );
 
-app.get('/', (req: any, res: any) => {
+// app.use('/api', require('./app/route'));
+app.get('/', (req: Request, res: Response) => {
   res.send('Hello, TypeScript with Express!');
 });
 
