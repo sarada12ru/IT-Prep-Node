@@ -1,8 +1,10 @@
 import express from "express";
-import { createTech } from "./tech.controller";
+import { saveTech, listTechs, removeTech } from "./tech.controller";
 
 const router = express.Router();
 
-router.post('/create', createTech);
+router.post('/save', saveTech);
+router.get('/', listTechs);
+router.delete('/:id', removeTech);
 
-module.exports = router;
+export default router;

@@ -1,8 +1,10 @@
 import express from "express";
-import { createQNA } from "./qset.controller";
+import { saveQSet, deleteQSet, listQSets } from "./qset.controller";
 
 const router = express.Router();
 
-router.post('/create', createQNA);
+router.post('/save', saveQSet);
+router.get('/', listQSets);
+router.delete('/:id', deleteQSet);
 
-module.exports = router;
+export default router;

@@ -1,7 +1,12 @@
 import express from "express";
 const router = express.Router();
 
-router.use('/qna', require('./qna/qna.route'));
-router.use('/tech', require('./tech/tech.route'));
+import qna from "./qna/qna.route";
+import tech from "./tech/tech.route";
+import qset from "./qset/qset.route";
 
-module.exports = router;
+router.use('/qna', qna);
+router.use('/q-set', qset);
+router.use('/tech', tech);
+
+export default router;

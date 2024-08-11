@@ -1,4 +1,5 @@
-export default interface ITech {
+export default interface IQSet {
+    questionSet: String;
     tech: String;
     notes: String;
     isActive: Boolean | undefined;

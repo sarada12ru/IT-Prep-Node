@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { ITech } from '../../core/interfaces/ITech';
+import ITech from '~/core/interfaces/ITech';
 const { Schema, model } = mongoose;
 
 const TechSchema = new Schema({
@@ -10,6 +10,10 @@ const TechSchema = new Schema({
     notes: {
         type: String,
         required: true
+    },
+    isActive: {
+        type: Boolean,
+        default: true
     },
     createdBy: {
         type: String,

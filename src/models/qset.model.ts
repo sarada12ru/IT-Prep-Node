@@ -1,14 +1,23 @@
 import mongoose from 'mongoose';
-const { Schema, model } = mongoose;
+const { Schema, model, Types: {ObjectId} } = mongoose;
 
 const QSetSchema = new Schema({
     questionSet: {
         type: String,
         required: true
     },
+    tech: {
+        type: ObjectId,
+        ref: 'Tech',
+        required: [true, 'Tech is Required']
+    },
     notes: {
         type: String,
         required: true
+    },
+    isActive: {
+        type: Boolean,
+        default: true
     },
     createdBy: {
         type: String,
